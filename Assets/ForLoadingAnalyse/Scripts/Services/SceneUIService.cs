@@ -12,6 +12,7 @@ namespace Services
         private GameObject _loadingScreenUIWindow;
         private Slider _loadingProgressBarSlider;
         private TextMeshProUGUI _loadingProgressTextField;
+        private TextMeshProUGUI _loadingAdviceTextField;
         #endregion
 
         #region MainMenu
@@ -23,7 +24,7 @@ namespace Services
         public SceneUIService(SceneUIContainer sceneUIContainer)
         {
             // LoadingScreen.
-            (_loadingScreenUIWindow, _loadingProgressBarSlider, _loadingProgressTextField) = (sceneUIContainer.LoadingScreenUIWindow, sceneUIContainer.LoadingProgressBarSlider, sceneUIContainer.LoadingProgressTextField);
+            (_loadingScreenUIWindow, _loadingProgressBarSlider, _loadingProgressTextField, _loadingAdviceTextField) = (sceneUIContainer.LoadingScreenUIWindow, sceneUIContainer.LoadingProgressBarSlider, sceneUIContainer.LoadingProgressTextField, sceneUIContainer.LoadingAdviceTextField);
 
             // MainMenu.
             (_mainMenuUIWindow, _newGameButton, _exitGameButton) = (sceneUIContainer.MainMenuUIWindow, sceneUIContainer.NewGameButton, sceneUIContainer.ExitGameButton);
@@ -35,6 +36,9 @@ namespace Services
             _loadingProgressBarSlider.value = progress;
             _loadingProgressTextField.text = $"{(int)(progress * 100)}%";
         }
+
+        public void RefreshLoadingAdvice(string adviceText)
+        => _loadingAdviceTextField.text = adviceText;
 
         public void CallLoadingWindow()
         => _loadingScreenUIWindow.SetActive(true);

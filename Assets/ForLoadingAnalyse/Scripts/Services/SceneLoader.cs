@@ -14,10 +14,11 @@ namespace Services
         private AsyncOperation _loadingAsyncOperation;
         private CoroutineProcessor _coroutineProcessor;
         private SceneUIService _sceneUIService;
+        private LoadingAdviceContainer _loadingAdviceContainer;
         private const float _progressFactor = 5.0f;
 
-        public SceneLoader(CoroutineProcessor coroutineProcessor, SceneUIService sceneUIService)
-        => (_coroutineProcessor, _sceneUIService) = (coroutineProcessor, sceneUIService);
+        public SceneLoader(CoroutineProcessor coroutineProcessor, SceneUIService sceneUIService, LoadingAdviceContainer loadingAdviceContainer)
+        => (_coroutineProcessor, _sceneUIService, _loadingAdviceContainer) = (coroutineProcessor, sceneUIService, loadingAdviceContainer);
 
         public void LoadScene(int sceneIndex, LoadingType loadingType)
         => _coroutineProcessor.StartCoroutine(OnLoad(sceneIndex, loadingType));
@@ -34,6 +35,7 @@ namespace Services
                 _loadingAsyncOperation = SceneManager.LoadSceneAsync(sceneIndex);
                 _loadingAsyncOperation.allowSceneActivation = false;
                 _sceneUIService.CallLoadingWindow();
+                LoadingAdvice loadingAdvice = new LoadingAdvice(_sceneUIService, _coroutineProcessor, _loadingAdviceContainer);
 
                 while (progress < .9f)
                 {

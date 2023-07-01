@@ -14,6 +14,8 @@ namespace Containers
         private Slider _loadingProgressBarSlider;
         [SerializeField, BoxGroup("LoadingScreen")]
         private TextMeshProUGUI _loadingProgressTextField;
+        [SerializeField, BoxGroup("LoadingScreen")]
+        private TextMeshProUGUI _loadingAdviceTextField;
         #endregion
 
         #region MainMenu
@@ -28,6 +30,7 @@ namespace Containers
         public GameObject LoadingScreenUIWindow => _loadingScreenUIWindow;
         public Slider LoadingProgressBarSlider => _loadingProgressBarSlider;
         public TextMeshProUGUI LoadingProgressTextField => _loadingProgressTextField;
+        public TextMeshProUGUI LoadingAdviceTextField => _loadingAdviceTextField;
         public GameObject MainMenuUIWindow => _mainMenuUIWindow;
         public Button NewGameButton => _newGameButton;
         public Button ExitGameButton => _exitGameButton;

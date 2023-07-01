@@ -9,6 +9,8 @@ public class Bootstrap : MonoBehaviour, IInitializable
     [SerializeField]
     private SceneUIContainer _sceneUIContainer;
     [SerializeField]
+    private LoadingAdviceContainer _loadingAdviceContainer;
+    [SerializeField]
     private LoadingType _loadingType;
 
     private CoroutineProcessor _coroutineProcessor;
@@ -19,7 +21,7 @@ public class Bootstrap : MonoBehaviour, IInitializable
     {
         _coroutineProcessor = new GameObject().AddComponent<CoroutineProcessor>();
         _sceneUIService = new(_sceneUIContainer);
-        _sceneLoader = new(_coroutineProcessor, _sceneUIService);
+        _sceneLoader = new(_coroutineProcessor, _sceneUIService, _loadingAdviceContainer);
         _sceneUIService.SetupMainMenuUIWindow(() => _sceneLoader.LoadScene(sceneIndex: 1, _loadingType));
     }
 
