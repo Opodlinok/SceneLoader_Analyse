@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ForLoadingAnalyse/_Scenes/MenuScene.unity
+    path: Assets/ForLoadingAnalyse/_Scenes/Scene_MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/ForLoadingAnalyse/_Scenes/GameplayScene.unity
+    path: Assets/ForLoadingAnalyse/_Scenes/Scene_Gameplay.unity
     guid: 93c4a25cdd60a2e44947ee538e336878
   m_configObjects: {}
